@@ -1,0 +1,53 @@
+html {
+  --main-background-color: orange;
+  --main-filter: blur(0);
+  --main-padding: 10px;
+}
+
+legend, input {
+  display: inline-block;
+}
+
+input {
+  margin-right: 50px;
+  vertical-align: middle;
+  height: 30px;
+}
+
+legend {
+  font-size: 30px;
+  font-family: sans-serif;
+  margin-right: 20px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+form {
+  height: 100px;
+  padding-left: 100px;
+  background-color: var(--main-background-color);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.wrapper {
+  background-color: var(--main-background-color);
+  padding: var(--main-padding);
+  width: 900px;
+  height: 700px;
+  box-sizing: border-box;
+  margin: 50px auto 0;
+  border: solid 3px black;
+}
+
+.handling {
+  width: 100%;
+  height: 100%;
+  background-image: url(bg.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: var(--main-filter);
+}

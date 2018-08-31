@@ -1,0 +1,58 @@
+body {
+  background-color: darkblue;
+}
+
+.countdown {
+  width: 800px;
+  margin: 300px auto;
+  font-family: sans-serif;
+}
+
+.timer {
+  font-size: 150px;
+  color: white;
+  text-align: center;
+}
+
+.countdown-text {
+  font-size: 40px;
+  text-align: center;
+  margin-top: 50px;
+  color: white;
+}
+
+.controls {
+  width: 1000px;
+  margin: 50px auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.button {
+  width: 150px;
+  color: white;
+  font-size: 25px;
+  text-transform: uppercase;
+  font-family: monospace;
+  height: 60px;
+  vertical-align: middle;
+  text-align: center;
+  border: solid 2px white;
+  display: table;
+  user-select: none;
+  cursor: pointer;
+  -moz-user-select: none;
+}
+
+.button span {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.input {
+  width: 250px;
+  height: 60px;
+  font-size: 25px;
+}
