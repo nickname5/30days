@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>text Shadow</title>
+    <style media="screen">
+      body {
+        padding: 0;
+      }
+      .text {
+        font-size: 100px;
+        color: black;
+        /* width: 500px; */
+        width: 100%;
+        height: 90vh;
+        font-family: monospace;
+        font-weight: 900;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        /* margin: 100px auto; */
+        /* transform: rotate(-10deg); */
+        /* text-shadow: -20px -20px red; */
+        user-select: none;
+        -moz-user-select: none;
+        transition: all, 0.05s;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="text">
+      Text Example
+    </div>
+    <script type="text/javascript">
+      const text = document.querySelector('.text');
+      const SHADOW_SIZE_X = text.getBoundingClientRect().width / text.getBoundingClientRect().height * 40;
+      const SHADOW_SIZE_Y = 40;
+      text.addEventListener('mouseenter', textMouseEnterHandler);
+      text.addEventListener('mouseleave', textMouseLeaveHandler);
+      text.addEventListener('mousemove', textMouseMoveHandler);
+      function textMouseEnterHandler(e) {
+        // console.log(e);
+      }
+      function textMouseLeaveHandler(e) {
+        // console.log(e);
+      }
+      function textMouseMoveHandler(e) {
+        let verticalMove = (text.getBoundingClientRect().height / 2) - (e.clientY - text.getBoundingClientRect().top);
+        verticalMove *= -1;
+        let horizontalMove = (text.getBoundingClientRect().width / 2) - (e.clientX - text.getBoundingClientRect().left);
+        horizontalMove *= -1;
+        console.log('y = ', verticalMove);
+        console.log('x = ', horizontalMove);
+        makeShadow(horizontalMove, verticalMove);
+      }
+
+      function makeShadow(x, y) {
+        let shadowX = x / (text.getBoundingClientRect().width / 2) * SHADOW_SIZE_X;
+        let shadowY = y / (text.getBoundingClientRect().height / 2) * SHADOW_SIZE_Y;
+        text.style.textShadow = `${shadowX}px ${shadowY}px red`;
+      }
+    </script>
+  </body>
+</html>
