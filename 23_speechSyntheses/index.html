@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>speech synthesis</title>
+    <style media="screen">
+      body {
+        background-color: orange;
+        padding: 0;
+      }
+
+      form {
+        background-color: grey;
+        width: 400px;
+        height: 400px;
+        margin: 100px auto;
+        display: flex;
+        flex-direction: column;
+        padding: 25px;
+        border-radius: 5px;
+      }
+
+      input, label {
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      textarea {
+        margin: 25px 0 30px
+      }
+
+      button {
+        width: 100px;
+        height: 48px;
+        font-family: sans-serif;
+        color: black;
+        font-size: 24px;
+        line-height: 2;
+        text-align: center;
+        background-color: orange;
+        border-radius: 5px;
+        border: solid 2px black;
+      }
+
+      .buttons {
+        margin-top: 50px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+      }
+    </style>
+  </head>
+  <body>
+    <form class="" action="index.html" method="post">
+      <div class="wrap">
+        <input type="range" name="pitch" value="" min="0" max="20">
+        <label for="pitch">Pitch</label>
+      </div>
+      <div class="wrap">
+        <input type="range" name="rate" value=""min="0" max="100">
+        <label for="rate">Rate</label>
+      </div>
+      <textarea name="name" rows="8" cols="80" placeholder="Enter text"></textarea>
+      <select class="" name="">
+      </select>
+      <div class="buttons">
+        <button type="button" name="start">Start</button>
+        <button type="button" name="stop">Stop</button>
+      </div>
+    </form>
+    <script src="script.js" charset="utf-8"></script>
+  </body>
+</html>

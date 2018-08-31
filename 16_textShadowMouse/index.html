@@ -36,15 +36,7 @@
       const text = document.querySelector('.text');
       const SHADOW_SIZE_X = text.getBoundingClientRect().width / text.getBoundingClientRect().height * 40;
       const SHADOW_SIZE_Y = 40;
-      text.addEventListener('mouseenter', textMouseEnterHandler);
-      text.addEventListener('mouseleave', textMouseLeaveHandler);
       text.addEventListener('mousemove', textMouseMoveHandler);
-      function textMouseEnterHandler(e) {
-        // console.log(e);
-      }
-      function textMouseLeaveHandler(e) {
-        // console.log(e);
-      }
       function textMouseMoveHandler(e) {
         let verticalMove = (text.getBoundingClientRect().height / 2) - (e.clientY - text.getBoundingClientRect().top);
         verticalMove *= -1;
