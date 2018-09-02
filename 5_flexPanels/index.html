@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>flex</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="panel r">
+        <span class="moving top">take</span>
+        <span class="center">it</span>
+        <span class="moving bottom">easy</span>
+      </div>
+      <div class="panel o">
+        <span class="moving top">take</span>
+        <span class="center">it</span>
+        <span class="moving bottom">easy</span>
+      </div>
+      <div class="panel y">
+        <span class="moving top">take</span>
+        <span class="center">it</span>
+        <span class="moving bottom">easy</span>
+      </div>
+      <div class="panel g">
+        <span class="moving top">take</span>
+        <span class="center">it</span>
+        <span class="moving bottom">easy</span>
+      </div>
+      <div class="panel b">
+        <span class="moving top">take</span>
+        <span class="center">it</span>
+        <span class="moving bottom">easy</span>
+      </div>
+    </div>
+    <script type="text/javascript">
+      const panels = document.querySelectorAll('.panel');
+      panels.forEach((panel) => {
+        panel.addEventListener('click', clickHandker);
+      });
+
+      function clickHandker(e) {
+        panels.forEach((panel) => {
+          if (this === panel) {
+            return
+          } else {
+            panel.classList.remove('active');
+          }
+        })
+        this.classList.toggle('active');
+      }
+    </script>
+  </body>
+</html>

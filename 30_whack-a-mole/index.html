@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>whack</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="top">
+      <button id="start" type="button" name="button">start</button>
+      <div class="counter">0</div>
+      <button id="stop" type="button" name="button">stop</button>
+    </div>
+    <div class="wrapper">
+      <div class="item">
+        <div class="whole"></div>
+        <div class="mole"></div>
+      </div>
+      <div class="item">
+        <div class="whole"></div>
+        <div class="mole"></div>
+      </div>
+      <div class="item">
+        <div class="whole"></div>
+        <div class="mole"></div>
+      </div>
+      <div class="item">
+        <div class="whole"></div>
+        <div class="mole"></div>
+      </div>
+      <div class="item">
+        <div class="whole"></div>
+        <div class="mole"></div>
+      </div>
+      <div class="item">
+        <div class="whole"></div>
+        <div class="mole"></div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      const items = document.querySelectorAll('.item');
+      const moles = document.querySelectorAll('.mole');
+      const counterEl = document.querySelector('.counter');
+      const start = document.getElementById('start');
+      const stop = document.getElementById('stop');
+      let counter = 0;
+      let int;
+      // items.forEach(item => item.addEventListener('click', test));
+      moles.forEach(item => item.addEventListener('click', count));
+      start.addEventListener('click', startGame);
+      stop.addEventListener('click', stopGame);
+
+      function getRandom(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min;
+      }
+
+      function activate(item) {
+        item.classList.toggle('active');
+        setTimeout(() => {
+          item.classList.remove('active');
+        }, 650)
+      }
+
+      function count(e) {
+        counter++;
+        this.removeEventListener('click', count);
+        this.addEventListener('transitionend', addListener);
+        counterEl.innerText = counter;
+      }
+
+      function addListener() {
+        this.addEventListener('click', count);
+      }
+
+      function startGame() {
+        int = setInterval(() => {
+          activate(items[getRandom(0, 6)]);
+        }, 1300);
+      }
+
+      function stopGame() {
+        clearInterval(int);
+        counter = 0;
+        counterEl.innerText = counter;
+      }
+    </script>
+  </body>
+</html>
