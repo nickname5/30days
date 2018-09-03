@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      body {
+        background-color: orange;
+      }
+      video {
+        width: 600px;
+      }
+      /* input {
+        transform: rotate(90deg);
+        position: absolute;
+        right: -120px;
+        top: 130px;
+        width: 250px;
+      } */
+      section {
+        width: 750px;
+        margin: 50px auto;
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+      }
+      .speedbar {
+        height: 300px;
+        width: 50px;
+        background-color: white;
+        border-radius: 20px;
+        position: relative;
+        overflow: hidden;
+      }
+      .thumb {
+        height: 180px;
+        width: 50px;
+        background: linear-gradient(to bottom, rgba(181,189,200,1) 0%,rgba(130,140,149,1) 36%,rgba(40,52,59,1) 100%);
+        /* border-radius: 20px 20px 0 0; */
+        position: absolute;
+        top: 0;
+        left: 0;
+        text-align: center;
+        vertical-align: middle;
+        cursor: pointer;
+        transition: all 0.05s;
+      }
+      span {
+        font-family: sans-serif;
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        /* left: 0; */
+        display: block;
+        text-align: center;
+        margin-top: -1em;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="">
+      <video src="video.mp4" poster="" controls></video>
+      <div class="speedbar">
+        <div class="thumb"><span>1.0x</span></div>
+      </div>
+    </section>
+  </body>
+  <script type="text/javascript">
+    const video = document.querySelector('video');
+    const text = document.querySelector('span');
+    const speedbar = document.querySelector('.speedbar');
+    const thumb = document.querySelector('.thumb');
+    let isMouseDown = false;
+
+    speedbar.addEventListener('mousedown', start);
+    speedbar.addEventListener('mouseup', finish);
+    document.addEventListener('mousemove', move)
+
+    console.log(video);
+
+    function start(e) {
+      thumb.style.height = `${parseInt(e.layerY)}px`;
+      changeSpeed(e.layerY);
+      isMouseDown = true;
+    }
+
+    function finish(e) {
+      isMouseDown = false;
+    }
+
+    function move(e) {
+      console.log(isMouseDown);
+      if (e.layerY < 0) {
+        thumb.style.height = '0';
+        changeSpeed(0);
+        return
+      }
+      if (e.layerY > 300) {
+        thumb.style.height = '300px';
+        changeSpeed(300);
+        return
+      }
+      if (isMouseDown) {
+        thumb.style.height = `${parseInt(e.layerY)}px`;
+        changeSpeed(e.layerY);
+        if (e.layerY > 300) {
+          return
+        }
+      }
+    }
+
+    function changeSpeed(y) {
+      let speed = (y / 75).toFixed(1)
+      text.innerText = speed + 'x';
+      video.playbackRate = speed;
+      console.log(video.playbackRate);
+    }
+  </script>
+</html>
